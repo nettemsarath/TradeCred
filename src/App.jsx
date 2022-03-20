@@ -1,29 +1,31 @@
-import React, {useEffect, Suspense} from "react";
+import React, { Suspense} from "react";
 import "./App.css";
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Routes,
-  Route,
-  Switch
+  Route
 } from "react-router-dom";
 
 import useStore from "@/store";
-
 import Loader from "@/components/Loading"
+
+function Router(){
+  return(
+    <Routes>
+      <Route path='/payment' component={Loader} />
+      <Route path='/' exact component={Loader} />
+    </Routes>
+  )
+};
 
 function App() {
   return (
     <div className="body_section" >
-      <Header />
-
-      <Router>
+      <BrowserRouter>
         <Suspense fallback={<Loader />}>
-          <Switch>
-            <Route path='/payment' component={Loader} />
-            <Route path='/' exact component={Loader} />
-          </Switch>
+          <Router />
         </Suspense>
-      </Router>
+      </BrowserRouter>
     </div>
   )
 };

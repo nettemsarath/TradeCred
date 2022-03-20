@@ -1,6 +1,5 @@
 import create from "zustand";
 import { persist, devtools } from "zustand/middleware";
-import { fetchAvailableOrders } from "@/httpRequest";
 
 const store = (set) => ({});
 
